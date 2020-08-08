@@ -21,36 +21,33 @@
     {% endif %}
     </script>
     {% endif %}
-    <header>
+    <header style="background-image:url('{{ page.media.images|first.cropResize(1038,437).url() }}');"> 
     <div class="title">
-        {% if page.header.link %}
-            <h2 itemprop="headline">
-                {% if page.header.continue_link is not sameas(false) %}
-                    <a href="{{ page.url }}"></a>
-                {% endif %}
-                <a href="{{ page.header.link }}">{{ page.title }}</a>
-            </h2>
-            {% else %}
-            <h2 itemprop="headline"><a href="{{ page.url }}">{{ page.title }}</a></h2>
-        {% endif %}
-        {% if page.header.description %}
-        <p itemprop="alternativeHeadline">{{ page.header.description }}</p>
-        {% endif %}
+        <div class="backpanel">
+            {% if page.header.link %}
+                <h2 itemprop="headline">
+                    {% if page.header.continue_link is not sameas(false) %}
+                        <a href="{{ page.url }}"></a>
+                    {% endif %}
+                    <a href="{{ page.header.link }}">{{ page.title }}</a>
+                </h2>
+                {% else %}
+                <h2 itemprop="headline"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+            {% endif %}
+            {% if page.header.description %}
+            <p itemprop="alternativeHeadline">{{ page.header.description }}</p>
+            {% endif %}
+        </div>
     </div>
-             <div class="meta">
-                                        <time class="published" itemprop="datePublished" datetime="{{page.date|date("Y-m-d")}}">{{ page.date|date("M j, Y")}}</time>
-                                        {% if author %}
-                                        <a href="{{ page.url }}" class="author"><span class="name" rel="author">{{ author }}</span><img src="{{ theme_url }}/images/{{avatar}}.jpg" alt="{{ author }}" /></a>
-                                        {% endif %}
-            </div>
+    <div class="meta" >
+        <div class="backpanel">
+            <time class="published" itemprop="datePublished" datetime="{{page.date|date("Y-m-d")}}">{{ page.date|date("M j, Y")}}</time>
+            {% if author %}
+            <a href="{{ page.url }}" class="author"><span class="name" rel="author">{{ author }}</span><img src="{{ theme_url }}/images/{{avatar}}.jpg" alt="{{ author }}" /></a>
+            {% endif %}
+        </div>
+    </div>
     </header>
-
-        {% if big_header %}
-            {{ page.media.images|first.cropResize(1038,437).html(page.title, page.title, 'image featured') }}
-        {% else %}
-            {{ page.media.images|first.cropZoom(1038,437).html(page.title, page.title, 'image featured') }}
-        {% endif %}
-
          
     <div itemprop="articleBody">
  

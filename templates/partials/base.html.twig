@@ -104,9 +104,11 @@
                 </div>
             </div>
         {% endblock %}
-        {% block sidebar %}
-            {% include 'partials/sidebar.html.twig' %}
-        {% endblock %}
+        {% if not fullscreen %}
+            {% block sidebar %}
+                {% include 'partials/sidebar.html.twig' %}
+            {% endblock %}
+        {% endif %}
 
     </div>
 
